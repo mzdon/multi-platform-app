@@ -1,0 +1,14 @@
+[
+	{
+		"id": 1,
+		"userId": 2,
+		"image": "beach.png",
+		"description": "This is the beach!"
+	},
+	{
+		"id": 1,
+		"userId": 2,
+		"image": "mountain.png",
+		"description": "This is the mountain!"
+	}
+]

@@ -1,0 +1,42 @@
+{
+    "name": "shared-resources",
+    "version": "1.0.0",
+    "description": "Shared Resources",
+    "main": "lib/index.js",
+    "author": "Marc Zdon (marc@bluetrackmedia.com)",
+    "license": "ISC",
+    "scripts": {
+        "dev": "watch 'npm run pack' src",
+        "pack": "./node_modules/.bin/webpack --config ./webpack.config.js"
+    },
+    "dependencies": {
+        "classnames": "^2.2.5",
+        "keymirror": "^0.1.1",
+        "moment": "^2.19.4",
+        "moment-timezone": "^0.5.14",
+        "prop-types": "^15.6.1",
+        "react": "^16.2.0",
+        "react-dom": "^16.7.0",
+        "react-redux": "^5.1.1",
+        "redux": "^4.0.1",
+        "redux-devtools-extension": "^2.13.5",
+        "redux-thunk": "^2.3.0",
+        "watch": "^1.0.2"
+    },
+    "devDependencies": {
+        "babel-core": "^6.26.0",
+        "babel-eslint": "^8.0.2",
+        "babel-jest": "^23.6.0",
+        "babel-loader": "^7.1.2",
+        "babel-plugin-transform-object-rest-spread": "^6.26.0",
+        "babel-preset-env": "^1.7.0",
+        "babel-preset-react": "^6.24.1",
+        "css-loader": "^0.28.7",
+        "node-sass": "^4.7.2",
+        "react-hot-loader": "^4.6.3",
+        "sass-loader": "^6.0.6",
+        "style-loader": "^0.19.0",
+        "webpack": "^4.27.0",
+        "webpack-cli": "^3.1.2"
+    }
+}

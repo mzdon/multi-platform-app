@@ -1,0 +1,18 @@
+[
+	{
+		"id": 1,
+		"username": "mzdon",
+		"name": "Marc Zdon",
+		"profilePicture": "bender.png",
+		"following": [2],
+		"followers": []
+	},
+	{
+		"id": 2,
+		"username": "czdon",
+		"name": "Colette Zdon",
+		"profilePicture": "colette.png",
+		"following": [],
+		"followers": [1]
+	}
+]

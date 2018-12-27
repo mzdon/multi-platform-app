@@ -1,0 +1,6 @@
+# ignore intellij project settings
+.idea/
+
+# ignore node_modules
+node_modules/
+

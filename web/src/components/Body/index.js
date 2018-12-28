@@ -2,21 +2,21 @@ import HomeScreen from "./HomeScreen";
 import LoginScreen from "./LoginScreen";
 import NewPostScreen from "./NewPostScreen";
 import ProtectedRoute from "./ProtectedRoute";
+import PrivacyScreen from "./PrivacyScreen";
+import TermsOfServiceScreen from "./TermsOfServiceScreen";
 import React from "react";
-import {Route, Redirect} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 
-export const Body = (props) => {
+export const Body = () => {
     return (
         <div className="Body">
-            <Route path="/login" component={LoginScreen} />
-            <ProtectedRoute path="/newPost" component={NewPostScreen} />
-            <ProtectedRoute exact path="/" component={HomeScreen} />
-            <Redirect
-                to={{
-                    pathname: "/login",
-                    state: {from: props.location}
-                }}
-            />
+            <Switch>
+                <Route path="/tos" component={TermsOfServiceScreen} />
+                <Route path="/privacy" component={PrivacyScreen} />
+                <Route path="/login" component={LoginScreen} />
+                <ProtectedRoute path="/newPost" component={NewPostScreen} />
+                <ProtectedRoute path="/" component={HomeScreen} />
+            </Switch>
         </div>
     );
 };

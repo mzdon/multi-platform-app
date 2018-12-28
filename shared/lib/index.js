@@ -188,7 +188,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n\tvalue: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.Header = exports.AppWrapper = undefined;\n\nvar _AppWrapper = __webpack_require__(/*! ./AppWrapper.jsx */ \"./src/containers/AppWrapper.jsx\");\n\nvar _AppWrapper2 = _interopRequireDefault(_AppWrapper);\n\nvar _Header = __webpack_require__(!(function webpackMissingModule() { var e = new Error(\"Cannot find module './Header.jsx'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));\n\nvar _Header2 = _interopRequireDefault(_Header);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.AppWrapper = _AppWrapper2.default;\nexports.Header = _Header2.default;\n\n//# sourceURL=webpack://shared-resources/./src/containers/index.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.AppWrapper = undefined;\n\nvar _AppWrapper = __webpack_require__(/*! ./AppWrapper.jsx */ \"./src/containers/AppWrapper.jsx\");\n\nvar _AppWrapper2 = _interopRequireDefault(_AppWrapper);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.AppWrapper = _AppWrapper2.default;\n\n//# sourceURL=webpack://shared-resources/./src/containers/index.js?");
 
 /***/ }),
 

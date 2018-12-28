@@ -59,15 +59,26 @@ export const likePost = (postId) => (dispatch, getState, {api}) => {
 };
 
 export const LOGIN__SUCCESS = "LOGIN__SUCCESS";
-export const login = (userName, password) => (dispatch, getState, {api}) => {
-    api.login(userName, password)
-    .then(({data}) => {
-        dispatch({
-            type: LOGIN__SUCCESS,
-            user: data
-        });
-    })
-    .catch(({error}) => {
-        dispatch(displayError(error));
-    });
-};
+// export const login = (userName, password) => (dispatch, getState, {api}) => {
+//     api.login(userName, password)
+//     .then(({data}) => {
+//         dispatch({
+//             type: LOGIN__SUCCESS,
+//             user: data
+//         });
+//     })
+//     .catch(({error}) => {
+//         dispatch(displayError(error));
+//     });
+// };
+export const login = user => ({
+    type: LOGIN__SUCCESS,
+    payload: {
+        user: user
+    }
+});
+
+export const LOGIN__FAILURE = "LOGIN__FAILURE";
+export const failLogin = () => ({
+    type: LOGIN__FAILURE
+});

@@ -3,6 +3,7 @@ import {
     GET_POSTS__SUCCESS,
     GO_HOME,
     LIKE_POST,
+    LOGIN__FAILURE,
     LOGIN__SUCCESS
 } from "../actions";
 
@@ -12,6 +13,7 @@ const {pages} = Const;
 
 export const initialState = {
     user: null,
+    failedLoginAttempts: 0,
     page: pages.HOME,
     postsById: {},
     likesByPostId: {}
@@ -69,7 +71,14 @@ const reducer = (state = initialState, action) => {
         case LOGIN__SUCCESS:
             return {
                 ...state,
-                user: payload.user
+                user: payload.user,
+                failedLoginAttempts: 0
+            };
+
+        case LOGIN__FAILURE:
+            return {
+                ...state,
+                failedLoginAttempts: state.failedLoginAttempts++
             };
 
         default:

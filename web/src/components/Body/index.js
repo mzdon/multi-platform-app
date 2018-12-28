@@ -1,13 +1,22 @@
 import HomeScreen from "./HomeScreen";
+import LoginScreen from "./LoginScreen";
 import NewPostScreen from "./NewPostScreen";
+import ProtectedRoute from "./ProtectedRoute";
 import React from "react";
-import {Route} from "react-router-dom";
+import {Route, Redirect} from "react-router-dom";
 
-export const Body = () => {
+export const Body = (props) => {
     return (
         <div className="Body">
-            <Route exact path="/" component={HomeScreen} />
-            <Route path="/newPost" component={NewPostScreen} />
+            <Route path="/login" component={LoginScreen} />
+            <ProtectedRoute path="/newPost" component={NewPostScreen} />
+            <ProtectedRoute exact path="/" component={HomeScreen} />
+            <Redirect
+                to={{
+                    pathname: "/login",
+                    state: {from: props.location}
+                }}
+            />
         </div>
     );
 };

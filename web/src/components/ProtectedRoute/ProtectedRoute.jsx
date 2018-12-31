@@ -1,6 +1,6 @@
 import {Redirect, Route} from "react-router-dom";
 import React from "react";
-import {containers as Containers} from "shared-resources";
+import {containers} from "shared-resources";
 
 export const ProtectedRoute = ({component: Component, ...rest}) => {
     return (
@@ -12,7 +12,7 @@ export const ProtectedRoute = ({component: Component, ...rest}) => {
                 ) : (
                     <Redirect
                         to={{
-                            pathname: "/login",
+                            pathname: "/signup",
                             state: {from: props.location}
                         }}
                     />
@@ -22,4 +22,4 @@ export const ProtectedRoute = ({component: Component, ...rest}) => {
     );
 };
 
-export default Containers.AuthWrapper(ProtectedRoute);
+export default containers.AuthWrapper(ProtectedRoute);

@@ -1,34 +1,24 @@
 import {
-    ADD_POST,
     GET_POSTS__SUCCESS,
-    GO_HOME,
     LIKE_POST,
-    LOGIN__FAILURE,
-    LOGIN__SUCCESS
-} from "../actions";
-
-import Const from "../constants";
-
-const {pages} = Const;
+    FETCH_USER,
+    LOGIN__FAILURE
+} from "../actionTypes";
 
 export const initialState = {
     user: null,
+    userFetched: false,
     failedLoginAttempts: 0,
-    page: pages.HOME,
     postsById: {},
-    likesByPostId: {}
+    likesByPostId: {},
+    email: "",
+    password: ""
 };
 
 const reducer = (state = initialState, action) => {
     const {type, payload} = action;
     let arr, idx;
     switch (type) {
-        case ADD_POST:
-            return {
-                ...state,
-                page: pages.NEW_POST
-            };
-
         case GET_POSTS__SUCCESS:
             return {
                 ...state,
@@ -36,12 +26,6 @@ const reducer = (state = initialState, action) => {
                     posts[post.id] = post;
                     return posts;
                 }, {})
-            };
-
-        case GO_HOME:
-            return {
-                ...state,
-                page: pages.HOME
             };
 
         case LIKE_POST:
@@ -68,11 +52,14 @@ const reducer = (state = initialState, action) => {
                 };
             }
 
-        case LOGIN__SUCCESS:
+        case FETCH_USER:
             return {
                 ...state,
                 user: payload.user,
-                failedLoginAttempts: 0
+                userFetched: true,
+                failedLoginAttempts: 0,
+                email: "",
+                password: ""
             };
 
         case LOGIN__FAILURE:

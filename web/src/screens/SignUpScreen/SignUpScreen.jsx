@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {containers} from "shared-resources";
 
-export class LoginScreen extends Component {
+export class SignUpScreen extends Component {
     constructor(props) {
         super(props);
 
@@ -15,9 +15,9 @@ export class LoginScreen extends Component {
     }
 
     render() {
-        const {email, password, onLogin} = this.props;
+        const {email, password, onSignUp} = this.props;
         return (
-            <div className="LoginScreen">
+            <div className="SignUpScreen">
                 <input
                     type="text"
                     onChange={this.updateEmail}
@@ -30,10 +30,10 @@ export class LoginScreen extends Component {
                     value={password}
                     placeholder="Password"
                 />
-                <button onClick={onLogin}>Login</button>
+                <button onClick={onSignUp}>Sign Up</button>
             </div>
         );
     }
 };
 
-export default containers.LoginWrapper(LoginScreen);
+export default containers.SignUpWrapper(SignUpScreen);

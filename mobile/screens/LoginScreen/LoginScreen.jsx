@@ -6,13 +6,18 @@ export class LoginScreen extends React.Component {
         return (
             <View>
                 <Button title="Sign in!" onPress={this._signInAsync} />
+                <Button title="No account? Sign up!" onPress={this._signUp} />
             </View>
         );
     }
 
     _signInAsync = async () => {
         await AsyncStorage.setItem("userToken", "abc");
-        this.props.navigation.navigate("App");
+        this.props.navigation.navigate("AppStack");
+    };
+
+    _signUp = () => {
+        this.props.navigation.navigate("SignUp");
     };
 }
 

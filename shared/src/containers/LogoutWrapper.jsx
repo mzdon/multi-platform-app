@@ -1,29 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {fetchUser} from "../actions";
+import {logout} from "../actions";
 
-export const AuthWrapper = RenderComponent => {
+export const LogoutWrapper = RenderComponent => {
     const Component = (props) => {
         return <RenderComponent {...props} />;
     };
 
     Component.propTypes = {
         user: PropTypes.object,
-        userFetched: PropTypes.bool,
-        onFetchUser: PropTypes.func
+        onLogout: PropTypes.func
     };
 
     return connect(mapStateToProps, mapDispatchToProps)(Component);
 };
 
 const mapStateToProps = state => ({
-    user: state.user,
-    userFetched: state.userFetched
+    user: state.user
 });
 
 const mapDispatchToProps = dispatch => ({
-    onFetchUser: () => dispatch(fetchUser())
+    onLogout: () => dispatch(logout())
 });
 
-export default AuthWrapper;
+export default LogoutWrapper;

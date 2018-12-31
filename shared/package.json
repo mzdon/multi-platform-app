@@ -11,6 +11,7 @@
     },
     "dependencies": {
         "classnames": "^2.2.5",
+        "firebase": "^5.7.2",
         "keymirror": "^0.1.1",
         "moment": "^2.19.4",
         "moment-timezone": "^0.5.14",

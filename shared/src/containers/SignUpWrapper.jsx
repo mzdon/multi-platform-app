@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {login, updateEmail, updatePassword} from "../actions";
+import {signUp, updateEmail, updatePassword} from "../actions";
 
-export const LoginWrapper = RenderComponent => {
+export const SignUpWrapper = RenderComponent => {
     const Component = (props) => {
         return <RenderComponent {...props} />;
     };
@@ -11,7 +11,7 @@ export const LoginWrapper = RenderComponent => {
     Component.propTypes = {
         email: PropTypes.string,
         password: PropTypes.string,
-        onLogin: PropTypes.func,
+        onSignUp: PropTypes.func,
         onUpdateEmail: PropTypes.func,
         onUpdatePassword: PropTypes.func
     };
@@ -25,9 +25,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    onLogin: () => dispatch(login()),
+    onSignUp: () => dispatch(signUp()),
     onUpdateEmail: email => dispatch(updateEmail(email)),
     onUpdatePassword: password => dispatch(updatePassword(password))
 });
 
-export default LoginWrapper;
+export default SignUpWrapper;

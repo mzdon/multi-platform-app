@@ -2,7 +2,8 @@ import {
     AuthLoadingScreen,
     HomeScreen,
     LoginScreen,
-    NewPostScreen
+    NewPostScreen,
+    SignUpScreen
 } from "../../screens";
 import {
     createSwitchNavigator,
@@ -10,6 +11,7 @@ import {
     createAppContainer
 } from "react-navigation";
 import Header from "../Header";
+import {withFooter} from "../Footer";
 import React from "react";
 
 // navigation init
@@ -20,31 +22,32 @@ const defaultNavigationOptions = {
 };
 const AppStack = createStackNavigator(
     {
-        Home: HomeScreen,
-        NewPost: NewPostScreen
+        Home: withFooter(HomeScreen),
+        NewPost: withFooter(NewPostScreen)
     },
     {
         initialRouteName: "Home",
         defaultNavigationOptions: {
             ...defaultNavigationOptions,
-            headerLeft: <Header.Left />,
             headerRight: <Header.Right />
         }
     }
 );
 const AuthStack = createStackNavigator(
     {
+        SignUpScreen: SignUpScreen,
         LoginScreen: LoginScreen
     },
     {
+        initialRouteName: "SignUpScreen",
         defaultNavigationOptions: defaultNavigationOptions
     }
 );
 const AppContainer = createAppContainer(createSwitchNavigator(
     {
         AuthLoading: AuthLoadingScreen,
-        App: AppStack,
-        Auth: AuthStack
+        AppStack: AppStack,
+        AuthStack: AuthStack
     },
     {
         initialRouteName: "AuthLoading"

@@ -31,7 +31,7 @@ export const Right = ({navigation}) => {
         <Text
             style={[styles.right, styles.font]}
             onPress={() => {navigation.navigate("NewPost")}}>
-            Plus Icon
+            +
         </Text>
     );
 };

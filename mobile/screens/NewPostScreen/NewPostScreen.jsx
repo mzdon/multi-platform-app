@@ -9,4 +9,8 @@ export const NewPostScreen = () => {
     );
 };
 
+NewPostScreen.navigationOptions = {
+    title: "New Post"
+};
+
 export default NewPostScreen;

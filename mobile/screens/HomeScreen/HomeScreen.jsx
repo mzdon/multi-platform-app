@@ -9,4 +9,8 @@ export const HomeScreen = () => {
     );
 };
 
+HomeScreen.navigationOptions = {
+    title: "Home"
+};
+
 export default HomeScreen;

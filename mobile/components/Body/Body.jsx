@@ -1,10 +1,24 @@
-import {HomeScreen, NewPostScreen} from "../../screens";
-import {createStackNavigator, createAppContainer} from "react-navigation";
+import {
+    AuthLoadingScreen,
+    HomeScreen,
+    LoginScreen,
+    NewPostScreen
+} from "../../screens";
+import {
+    createSwitchNavigator,
+    createStackNavigator,
+    createAppContainer
+} from "react-navigation";
 import Header from "../Header";
 import React from "react";
 
 // navigation init
-const Navigator = createStackNavigator(
+const defaultNavigationOptions = {
+    headerStyle: {
+        backgroundColor: "violet"
+    }
+};
+const AppStack = createStackNavigator(
     {
         Home: HomeScreen,
         NewPost: NewPostScreen
@@ -12,15 +26,30 @@ const Navigator = createStackNavigator(
     {
         initialRouteName: "Home",
         defaultNavigationOptions: {
-            headerStyle: {
-                backgroundColor: "violet"
-            },
+            ...defaultNavigationOptions,
             headerLeft: <Header.Left />,
             headerRight: <Header.Right />
         }
     }
 );
-const AppContainer = createAppContainer(Navigator);
+const AuthStack = createStackNavigator(
+    {
+        LoginScreen: LoginScreen
+    },
+    {
+        defaultNavigationOptions: defaultNavigationOptions
+    }
+);
+const AppContainer = createAppContainer(createSwitchNavigator(
+    {
+        AuthLoading: AuthLoadingScreen,
+        App: AppStack,
+        Auth: AuthStack
+    },
+    {
+        initialRouteName: "AuthLoading"
+    }
+));
 
 export const Body = () => {
     return <AppContainer/>;

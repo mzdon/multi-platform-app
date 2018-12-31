@@ -14,6 +14,13 @@ export class LoginScreen extends Component {
         };
     }
 
+    componentDidUpdate() {
+        const {history, user} = this.props;
+        if (user) {
+            history.push("/");
+        }
+    }
+
     render() {
         const {email, password, onLogin} = this.props;
         return (
@@ -34,6 +41,6 @@ export class LoginScreen extends Component {
             </div>
         );
     }
-};
+}
 
 export default containers.LoginWrapper(LoginScreen);

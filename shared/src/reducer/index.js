@@ -2,7 +2,9 @@ import {
     GET_POSTS__SUCCESS,
     LIKE_POST,
     FETCH_USER,
-    LOGIN__FAILURE
+    LOGIN__FAILURE,
+    UPDATE_EMAIL,
+    UPDATE_PASSWORD
 } from "../actionTypes";
 
 export const initialState = {
@@ -66,6 +68,18 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 failedLoginAttempts: state.failedLoginAttempts++
+            };
+
+        case UPDATE_EMAIL:
+            return {
+                ...state,
+                email: payload.email
+            };
+
+        case UPDATE_PASSWORD:
+            return {
+                ...state,
+                password: payload.password
             };
 
         default:

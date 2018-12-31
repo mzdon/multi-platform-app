@@ -14,6 +14,13 @@ export class SignUpScreen extends Component {
         };
     }
 
+    componentDidUpdate() {
+        const {history, user} = this.props;
+        if (user) {
+            history.push("/");
+        }
+    }
+
     render() {
         const {email, password, onSignUp} = this.props;
         return (

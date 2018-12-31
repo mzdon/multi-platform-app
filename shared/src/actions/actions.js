@@ -93,7 +93,7 @@ export const login = () => (dispatch, getState) => {
 };
 
 export const logout = () => dispatch => {
-    firebase.auth().signOut()
+    authRef.signOut()
     .catch(({error}) => {
         dispatch(displayError(error));
     });

@@ -9,6 +9,7 @@ export const SignUpWrapper = RenderComponent => {
     };
 
     Component.propTypes = {
+        user: PropTypes.object,
         email: PropTypes.string,
         password: PropTypes.string,
         onSignUp: PropTypes.func,
@@ -20,6 +21,7 @@ export const SignUpWrapper = RenderComponent => {
 };
 
 const mapStateToProps = state => ({
+    user: state.user,
     email: state.email,
     password: state.password
 });

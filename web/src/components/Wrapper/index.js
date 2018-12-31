@@ -1,11 +1,3 @@
-import React from "react";
-
-export const Wrapper = ({children}) => {
-    return (
-        <main>
-            {children}
-        </main>
-    );
-};
+import Wrapper from "./Wrapper.jsx";
 
 export default Wrapper;

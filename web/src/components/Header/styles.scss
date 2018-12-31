@@ -1,0 +1,27 @@
+.Header {
+	background-color: violet;
+  display: flex;
+  flex-direction: row;
+
+  a, h3 {
+    flex-grow: 1;
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  a {
+    font-size: 1.17em;
+    margin: 1em 0;
+
+    &.left {
+      margin-left: 1em;
+    }
+
+    &.right {
+      margin-right: 1em;
+      text-align: right;
+    }
+  }
+}

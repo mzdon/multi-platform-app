@@ -1,0 +1,47 @@
+.Nav {
+  flex-grow: 1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -100%;
+
+  font-size: 1.17em;
+  font-weight: normal;
+  color: #222;
+
+  &.open {
+    position: unset;
+  }
+
+  ul {
+    height: 100%;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    background-color: lightcyan;
+  }
+
+  li {
+    max-width: 10em;
+    display: block;
+    border-bottom: 1px solid lightgray
+  }
+
+  a {
+    display: block;
+    line-height: 2em;
+    padding: 1em;
+
+    &:hover {
+      background-color: lightblue;
+    }
+
+    &.active {
+      background-color: lightblue;
+    }
+  }
+}

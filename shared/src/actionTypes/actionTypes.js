@@ -5,5 +5,7 @@ export const GET_FEED__SUCCESS = "GET_FEED__SUCCESS";
 export const LIKE_POST = "LIKE_POST";
 export const FETCH_USER = "FETCH_USER";
 export const LOGIN__FAILURE = "LOGIN__FAILURE";
+export const LOGOUT__SUCCESS = "LOGOUT__SUCCESS";
+export const TOGGLE_NAV = "TOGGLE_NAV";
 export const UPDATE_EMAIL = "UPDATE_EMAIL";
 export const UPDATE_PASSWORD = "UPDATE_PASSWORD";

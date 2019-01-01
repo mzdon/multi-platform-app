@@ -1,4 +1,4 @@
-import  * as Types from "../actionTypes";
+import * as Types from "../actionTypes";
 import {authRef} from "../util/Firebase";
 
 export const addPost = () => ({
@@ -18,7 +18,7 @@ export const getPosts = (userId) => (dispatch, getState, {api}) => {
         dispatch({
             type: Types.GET_POSTS__SUCCESS,
             posts: data
-        })
+        });
     })
     .catch(({error}) => {
         dispatch(displayError(error));
@@ -31,7 +31,7 @@ export const getFeed = (userId) => (dispatch, getState, {api}) => {
         dispatch({
             type: Types.GET_FEED__SUCCESS,
             feed: data
-        })
+        });
     })
     .catch(({error}) => {
         dispatch(displayError(error));
@@ -54,7 +54,7 @@ export const likePost = (postId) => (dispatch, getState, {api}) => {
 };
 
 export const fetchUser = () => dispatch => {
-    authRef.onAuthStateChanged(user => {
+    return authRef.onAuthStateChanged(user => {
         if (user) {
             dispatch({
                 type: Types.FETCH_USER,
@@ -75,7 +75,7 @@ export const fetchUser = () => dispatch => {
 
 export const signUp = () => (dispatch, getState) => {
     const {email, password} = getState();
-    authRef.createUserWithEmailAndPassword(email, password)
+    return authRef.createUserWithEmailAndPassword(email, password)
     .catch(({error}) => {
         dispatch(displayError(error));
     });
@@ -83,7 +83,7 @@ export const signUp = () => (dispatch, getState) => {
 
 export const login = () => (dispatch, getState) => {
     const {email, password} = getState();
-    authRef.signInWithEmailAndPassword(email, password)
+    return authRef.signInWithEmailAndPassword(email, password)
     .catch(({error}) => {
         dispatch(displayError(error));
         dispatch({
@@ -93,11 +93,20 @@ export const login = () => (dispatch, getState) => {
 };
 
 export const logout = () => dispatch => {
-    authRef.signOut()
+    return authRef.signOut()
+    .then(() => {
+        dispatch({
+            type: Types.LOGOUT__SUCCESS
+        });
+    })
     .catch(({error}) => {
         dispatch(displayError(error));
     });
 };
+
+export const toggleNav = () => ({
+    type: Types.TOGGLE_NAV
+});
 
 export const updateEmail = email => ({
     type: Types.UPDATE_EMAIL,

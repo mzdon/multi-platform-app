@@ -3,18 +3,21 @@ import {
     LIKE_POST,
     FETCH_USER,
     LOGIN__FAILURE,
+    LOGOUT__SUCCESS,
+    TOGGLE_NAV,
     UPDATE_EMAIL,
     UPDATE_PASSWORD
 } from "../actionTypes";
 
 export const initialState = {
     user: null,
-    userFetched: false,
+    loading: true,
     failedLoginAttempts: 0,
     postsById: {},
     likesByPostId: {},
     email: "",
-    password: ""
+    password: "",
+    navOpen: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -56,18 +59,27 @@ const reducer = (state = initialState, action) => {
 
         case FETCH_USER:
             return {
-                ...state,
+                ...initialState,
                 user: payload.user,
-                userFetched: true,
-                failedLoginAttempts: 0,
-                email: "",
-                password: ""
+                loading: false
             };
 
         case LOGIN__FAILURE:
             return {
                 ...state,
                 failedLoginAttempts: state.failedLoginAttempts++
+            };
+
+        case LOGOUT__SUCCESS:
+            return {
+                ...initialState,
+                loading: false
+            };
+
+        case TOGGLE_NAV:
+            return {
+                ...state,
+                navOpen: !state.navOpen
             };
 
         case UPDATE_EMAIL:

@@ -10,7 +10,7 @@ export const AuthWrapper = RenderComponent => {
 
     Component.propTypes = {
         user: PropTypes.object,
-        userFetched: PropTypes.bool,
+        loading: PropTypes.bool,
         onFetchUser: PropTypes.func
     };
 
@@ -19,7 +19,7 @@ export const AuthWrapper = RenderComponent => {
 
 const mapStateToProps = state => ({
     user: state.user,
-    userFetched: state.userFetched
+    loading: state.loading
 });
 
 const mapDispatchToProps = dispatch => ({

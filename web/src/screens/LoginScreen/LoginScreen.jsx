@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {Link} from "react-router-dom";
 import {containers} from "shared-resources";
 
 export class LoginScreen extends Component {
@@ -38,6 +39,7 @@ export class LoginScreen extends Component {
                     placeholder="Password"
                 />
                 <button onClick={onLogin}>Login</button>
+                <Link to="/signup">Not signed up? Sign Up!</Link>
             </div>
         );
     }

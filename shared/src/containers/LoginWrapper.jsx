@@ -9,6 +9,7 @@ export const LoginWrapper = RenderComponent => {
     };
 
     Component.propTypes = {
+        user: PropTypes.object,
         email: PropTypes.string,
         password: PropTypes.string,
         onLogin: PropTypes.func,
@@ -20,6 +21,7 @@ export const LoginWrapper = RenderComponent => {
 };
 
 const mapStateToProps = state => ({
+    user: state.user,
     email: state.email,
     password: state.password
 });

@@ -1,24 +1,25 @@
 import "./styles.scss";
 import {Link, withRouter} from "react-router-dom";
+import NavHamburger from "../NavHamburger";
 import React from "react";
-import {constants} from "shared-resources";
+import {constants, containers} from "shared-resources";
 
 const getPageName = pathname => {
     return constants.paths[pathname] || "";
 };
 
-export const Header = ({location}) => {
+export const Header = ({user, location}) => {
     return (
         <header className="Header">
-            <Link className="left" to="/">
-                <i className="fa fal fa-home" />
-            </Link>
+            {user && <span className="left">
+                <NavHamburger />
+            </span>}
             <h3>{getPageName(location.pathname)}</h3>
-            <Link className="right" to="/newPost">
+            {user && <Link className="right" to="/newPost">
                 <i className="fa fal fa-plus" />
-            </Link>
+            </Link>}
         </header>
     );
 };
 
-export default withRouter(Header);
+export default withRouter(containers.AuthWrapper(Header));

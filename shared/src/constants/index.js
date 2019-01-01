@@ -7,6 +7,7 @@ export default {
     paths: {
         "/": "Home",
         "/newPost": "New Post",
-        "/login": "Login"
+        "/login": "Login",
+        "/signup": "Sign Up"
     }
 };

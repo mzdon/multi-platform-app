@@ -2,8 +2,10 @@
 	background-color: violet;
   display: flex;
   flex-direction: row;
+  font-size: 1.17em;
+  font-weight: bold;
 
-  a, h3 {
+  a, h3, span {
     flex-grow: 1;
   }
 
@@ -12,16 +14,15 @@
   }
 
   a {
-    font-size: 1.17em;
     margin: 1em 0;
-
-    &.left {
-      margin-left: 1em;
-    }
 
     &.right {
       margin-right: 1em;
       text-align: right;
     }
+  }
+
+  .left {
+    margin: 1em 0 1em 1em;
   }
 }

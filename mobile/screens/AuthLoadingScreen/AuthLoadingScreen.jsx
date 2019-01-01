@@ -8,13 +8,12 @@ import {containers} from "shared-resources";
 
 export class AuthLoadingScreen extends Component {
     componentDidMount() {
-        const {userFetched, onFetchUser} = this.props;
-        !userFetched && onFetchUser();
+        this.props.onFetchUser();
     }
 
     componentDidUpdate() {
-        const {userFetched, user, navigation} = this.props;
-        if (userFetched) {
+        const {loading, user, navigation} = this.props;
+        if (!loading) {
             navigation.navigate(user ? "AppStack" : "AuthStack")
         }
     }

@@ -1,3 +1,4 @@
+import "./styles.scss";
 import {
     AuthLoadingScreen,
     HomeScreen,
@@ -9,37 +10,43 @@ import {
 } from "../../screens";
 import React, {Component} from "react";
 import {Route, Switch, withRouter} from "react-router-dom";
+import Logout from "../Logout";
+import Nav from "../Nav";
 import ProtectedRoute from "../ProtectedRoute";
 import {containers} from "shared-resources";
 
-const getBody = userFetched => {
-    if (userFetched) {
-        return (
-            <Switch>
-                <Route path="/tos" component={TermsOfServiceScreen} />
-                <Route path="/privacy" component={PrivacyScreen} />
-                <Route path="/signup" component={SignUpScreen} />
-                <Route path="/login" component={LoginScreen} />
-                <ProtectedRoute path="/newPost" component={NewPostScreen} />
-                <ProtectedRoute exact path="/" component={HomeScreen} />
-            </Switch>
-        );
+const getBody = loading => {
+    if (loading) {
+        return <AuthLoadingScreen />;
     }
-
-    return <AuthLoadingScreen />;
+    return (
+        <React.Fragment>
+            <Nav />
+            <div className="Screen">
+                <Switch>
+                    <Route path="/tos" component={TermsOfServiceScreen} />
+                    <Route path="/privacy" component={PrivacyScreen} />
+                    <Route path="/signup" component={SignUpScreen} />
+                    <Route path="/logout" component={Logout} />
+                    <Route path="/login" component={LoginScreen} />
+                    <ProtectedRoute path="/newPost" component={NewPostScreen} />
+                    <ProtectedRoute exact path="/" component={HomeScreen} />
+                </Switch>
+            </div>
+        </React.Fragment>
+    );
 };
 
 export class Body extends Component {
     componentDidMount() {
-        const {userFetched, onFetchUser} = this.props;
-        !userFetched && onFetchUser();
+        this.props.onFetchUser();
     }
 
     render() {
-        const {userFetched} = this.props;
+        const {loading} = this.props;
         return (
             <div className="Body">
-                {getBody(userFetched)}
+                {getBody(loading)}
             </div>
         );
     }

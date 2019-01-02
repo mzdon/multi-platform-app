@@ -2,17 +2,20 @@ import {
     AuthLoadingScreen,
     HomeScreen,
     LoginScreen,
+    LogoutScreen,
     NewPostScreen,
     SignUpScreen
 } from "../../screens";
 import {
     createSwitchNavigator,
     createStackNavigator,
-    createAppContainer
+    createAppContainer,
+    createDrawerNavigator
 } from "react-navigation";
 import Header from "../Header";
-import {withFooter} from "../Footer";
+import Nav from "../Nav";
 import React from "react";
+import {Dimensions} from "react-native";
 
 // navigation init
 const defaultNavigationOptions = {
@@ -20,15 +23,34 @@ const defaultNavigationOptions = {
         backgroundColor: "violet"
     }
 };
-const AppStack = createStackNavigator(
+const NavDrawer = createDrawerNavigator(
     {
-        Home: withFooter(HomeScreen),
-        NewPost: withFooter(NewPostScreen)
+        HomeScreen: {
+            screen: HomeScreen
+        },
+        NewPostScreen: {
+            screen: NewPostScreen
+        },
+        LogoutScreen: {
+            screen: LogoutScreen
+        }
     },
     {
-        initialRouteName: "Home",
+        contentComponent: Nav,
+        drawerWidth: Dimensions.get('window').width - 120,
+    }
+);
+const AppStack = createStackNavigator(
+    {
+        AppStack: {
+            screen: NavDrawer
+        }
+    },
+    {
+        headerMode: "float",
         defaultNavigationOptions: {
             ...defaultNavigationOptions,
+            headerLeft: <Header.Left />,
             headerRight: <Header.Right />
         }
     }
@@ -50,7 +72,8 @@ const AppContainer = createAppContainer(createSwitchNavigator(
         AuthStack: AuthStack
     },
     {
-        initialRouteName: "AuthLoading"
+        initialRouteName: "AuthLoading",
+        headerMode: "none"
     }
 ));
 

@@ -20,8 +20,8 @@ export const Left = ({navigation}) => {
     return (
         <Text
             style={[styles.left, styles.font]}
-            onPress={() => {navigation.navigate("Home")}}>
-            Home Icon
+            onPress={() => {navigation.toggleDrawer()}}>
+            Open Drawer
         </Text>
     );
 };
@@ -30,7 +30,7 @@ export const Right = ({navigation}) => {
     return (
         <Text
             style={[styles.right, styles.font]}
-            onPress={() => {navigation.navigate("NewPost")}}>
+            onPress={() => {navigation.navigate("NewPostScreen")}}>
             +
         </Text>
     );

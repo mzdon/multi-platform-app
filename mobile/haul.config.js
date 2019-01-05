@@ -15,8 +15,6 @@ module.exports = (options, defaults) => {
         return r.test && r.test.toString().indexOf("js$");
     });
 
-    console.log("Rule Index: " + ruleIndex);
-
     let config;
     if (ruleIndex) {
         config = {
@@ -37,8 +35,6 @@ module.exports = (options, defaults) => {
     } else {
         config = defaults;
     }
-
-    console.log(config);
 
     return config;
 };
